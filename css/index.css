@@ -591,8 +591,7 @@ JOURNEY
 }
 
 .journey__wrapper {
-    scroll-behavior: smooth;
-    scroll-behavior: auto !important;
+    scroll-behavior: auto;
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
