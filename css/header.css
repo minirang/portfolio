@@ -1,0 +1,308 @@
+/* ============================================
+   HEADER — reusable across pages
+   ============================================ */
+
+:root {
+  --hd-bg: rgba(10, 10, 11, 0.72);
+  --hd-bg-solid: #0a0a0b;
+  --hd-border: rgba(255, 255, 255, 0.06);
+  --hd-text: #e6e6e6;
+  --hd-text-dim: #8a8a92;
+  --hd-accent: oklch(0.78 0.12 200);
+  --hd-height: 72px;
+}
+
+/* reset for header scope */
+.site-header *,
+.site-header *::before,
+.site-header *::after {
+  box-sizing: border-box;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--hd-height);
+  z-index: 999;
+  background: var(--hd-bg);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.site-header.scrolled {
+  border-bottom-color: var(--hd-border);
+}
+
+.site-header__inner {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ===== Logo ===== */
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--hd-text);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.site-header__logo:hover {
+  opacity: 0.75;
+}
+
+.site-header__logo-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.site-header__logo-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+/* prevent logo text from breaking into multiple lines */
+.site-header__logo-text {
+  white-space: nowrap;
+}
+
+/* ===== Nav ===== */
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* keep items on single row by default; enable scrolling via media query */
+.site-header__nav {
+  white-space: nowrap; /* keep items on single row for scrolling when active */
+}
+
+/* subtle horizontal scrollbar for nav (matches dark theme) */
+.site-header__nav::-webkit-scrollbar {
+  height: 6px;
+}
+.site-header__nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+.site-header__nav::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  transition: background 0.18s ease;
+}
+.site-header__nav:hover::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+}
+.site-header__nav {
+  -ms-overflow-style: auto; /* show scrollbar on IE/Edge */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(255,255,255,0.06) transparent;
+}
+
+.site-header__link {
+  position: relative;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 450;
+  color: var(--hd-text-dim);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+/* keep nav items on a single line */
+.site-header__link {
+  white-space: nowrap;
+}
+
+.site-header__link:hover {
+  color: var(--hd-text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.site-header__link.is-active {
+  color: var(--hd-text);
+}
+
+.site-header__link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 2px;
+  height: 1px;
+  background: var(--hd-accent);
+  border-radius: 1px;
+}
+
+/* ===== CTA on right (optional slot) ===== */
+.site-header__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0a0a0b;
+  background: var(--hd-text);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+/* ensure CTA text doesn't wrap (keeps arrow on same line) */
+.site-header__cta {
+  white-space: nowrap;
+}
+
+.site-header__cta:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* ===== Mobile toggle ===== */
+.site-header__toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--hd-border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.site-header__toggle span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 1.5px;
+  background: var(--hd-text);
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.site-header__toggle span:nth-child(1) {
+  transform: translate(-50%, calc(-50% - 5px));
+}
+
+.site-header__toggle span:nth-child(3) {
+  transform: translate(-50%, calc(-50% + 5px));
+}
+
+.site-header__toggle.is-open span:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.site-header__toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header__toggle.is-open span:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ===== Mobile menu ===== */
+.site-header__mobile {
+  position: fixed;
+  top: var(--hd-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, var(--hd-bg-solid) 0%, rgba(10, 10, 11, 0.98) 100%);
+  z-index: 998;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  overflow: hidden;
+  justify-content: space-around;
+}
+
+.site-header__mobile.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-header__mobile a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--hd-text);
+  text-decoration: none;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: -0.01em;
+  transition: padding 0.2s ease, color 0.2s ease, background 0.2s ease;
+  position: relative;
+  flex: 1;
+}
+
+.site-header__mobile a:hover {
+  color: var(--hd-accent);
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 28px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .site-header__inner {
+    padding: 0 20px;
+  }
+
+  .site-header__nav,
+  .site-header__cta {
+    display: none;
+  }
+
+  .site-header__toggle {
+    display: block;
+  }
+}
+
+/* enable nav horizontal scrolling on narrower desktops/tablets */
+@media (max-width: 1100px) {
+  .site-header__nav {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    scroll-behavior: smooth;
+    padding-bottom: 6px; /* give space if scrollbar appears */
+  }
+}
+
+/* spacer so page content doesn't sit under fixed header */
+.site-header-spacer {
+  height: var(--hd-height);
+}

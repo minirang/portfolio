@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>minirang — Portfolio</title>
+	<meta name="description" content="Personal portfolio — about, skills, projects, and what I'm building right now." />
+
+	<link rel="icon" href="./images/minirang.svg" type="image/svg+xml">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+		rel="stylesheet" />
+
+	<!-- AOS -->
+	<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+	<!-- Header CSS (external) -->
+	<link rel="stylesheet" href="css/index.css" />
+	<link rel="stylesheet" href="css/header.css" />
+</head>
+
+<body>
+	<!-- Reusable header mounts here -->
+	<div id="site-header-mount"></div>
+
+	<main>
+		<!-- =========================================================
+       1. ABOUT  (hero)
+       ========================================================= -->
+		<section class="hero" id="about" data-screen-label="01 About">
+			<div class="hero__glow" aria-hidden="true"></div>
+			<div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+
+			<!-- Animated background -->
+			<div class="hero__bg" aria-hidden="true">
+				<div class="hero__grid"></div>
+				<div class="hero__particles" id="heroParticles"></div>
+				<svg class="hero__lines" viewBox="0 0 1200 600" preserveAspectRatio="none">
+					<line x1="0" y1="120" x2="1200" y2="380" />
+					<line x1="200" y1="0" x2="800" y2="600" />
+					<line x1="600" y1="0" x2="400" y2="600" />
+					<line x1="900" y1="100" x2="300" y2="500" />
+				</svg>
+			</div>
+
+			<div class="container hero__inner">
+				<div>
+					<div class="hero__status" data-aos="fade-up">
+						<span class="hero__status-dot"></span>
+						Available for new projects · Seoul, KR
+					</div>
+
+					<h1 class="hero__title" data-aos="fade-up" data-aos-delay="80">
+						Learning &amp; building<br />
+						<span id="typingTarget"></span><span class="typing-cursor"></span>
+					</h1>
+
+					<p class="hero__sub" data-aos="fade-up" data-aos-delay="160">
+						Hi, I'm <strong style="color: var(--text); font-weight: 500">minirang</strong> — a front-end
+						developer who loves optimizing client logic and building simple, high-impact tools. Leveraging
+						TS and Node, I focus on clean architecture, workflow automation, and seamless user
+						experiences—recently contributing to a small-team website and crafting an esoteric language.
+					</p>
+
+					<div class="hero__actions" data-aos="fade-up" data-aos-delay="220">
+						<a href="#projects" class="btn btn--primary">
+							See projects
+							<span aria-hidden="true">→</span>
+						</a>
+						<a href="#contact" class="btn btn--ghost">Get in touch</a>
+					</div>
+				</div>
+
+				<!-- Identity card -->
+				<aside class="hero__card" data-aos="fade-left" data-aos-delay="200">
+					<div class="hero__avatar" id="heroAvatar">
+						<img id="heroAvatarImg" alt="Profile" />
+						<span class="hero__avatar-fallback">MR</span>
+					</div>
+					<h3>minirang</h3>
+					<div class="role">// student front-end developer</div>
+
+					<div class="hero__meta">
+						<div class="hero__meta-row">
+							<span>BASED</span>
+							<strong>Seoul, KR</strong>
+						</div>
+						<div class="hero__meta-row">
+							<span>FOCUS</span>
+							<strong>Web · Tooling</strong>
+						</div>
+						<div class="hero__meta-row">
+							<span>STACK</span>
+							<strong>HTML/CSS · JS/TS · Node · Batch</strong>
+						</div>
+						<div class="hero__meta-row">
+							<span>INTEREST</span>
+							<strong>Esolangs · Perf · Automation</strong>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       LOGO MARQUEE — auto-loaded from images/logos/
+       ========================================================= -->
+		<div class="logo-marquee-wrap" id="logoMarqueeWrap">
+			<div class="logo-marquee" id="logoMarquee">
+				<div class="logo-marquee__track" id="logoTrack">
+					<!-- populated by JS -->
+				</div>
+			</div>
+		</div>
+
+		<!-- =========================================================
+       2. SKILLS  (3D rotating cards)
+       ========================================================= -->
+		<section class="skills" id="skills" data-screen-label="02 Skills">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">02 / Skills</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Tools I reach for.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					A working selection — not a checklist. Move your cursor over each card.
+				</p>
+
+				<div class="skills__grid">
+					<!-- Each card: name, glyph, level (0–1), years -->
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="0">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="python">
+							<img alt="" /><span class="skill-card__icon-glyph">Py</span>
+						</div>
+						<h3 class="skill-card__name">Python</h3>
+						<div class="skill-card__meta">2 yrs · weekly</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.93"></div>
+						</div>
+					</article>
+
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="70">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="html">
+							<img alt="" /><span class="skill-card__icon-glyph">&lt;&gt;</span>
+						</div>
+						<h3 class="skill-card__name">HTML</h3>
+						<div class="skill-card__meta">3 yrs · daily</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.87"></div>
+						</div>
+					</article>
+
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="140">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="css">
+							<img alt="" /><span class="skill-card__icon-glyph">{ }</span>
+						</div>
+						<h3 class="skill-card__name">CSS</h3>
+						<div class="skill-card__meta">3 yrs · daily</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.8"></div>
+						</div>
+					</article>
+
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="210">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="javascript">
+							<img alt="" /><span class="skill-card__icon-glyph">JS</span>
+						</div>
+						<h3 class="skill-card__name">JavaScript</h3>
+						<div class="skill-card__meta">3 yrs · daily</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.8"></div>
+						</div>
+					</article>
+
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="35">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="typescript">
+							<img alt="" /><span class="skill-card__icon-glyph">TS</span>
+						</div>
+						<h3 class="skill-card__name">TypeScript</h3>
+						<div class="skill-card__meta">1 yrs · learning</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.6"></div>
+						</div>
+					</article>
+
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="105">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="node">
+							<img alt="" /><span class="skill-card__icon-glyph">N</span>
+						</div>
+						<h3 class="skill-card__name">Node.js</h3>
+						<div class="skill-card__meta">1 yrs · learning</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.45"></div>
+						</div>
+					</article>
+					<!--
+                        <article class="skill-card" data-aos="fade-up" data-aos-delay="120">
+                            <div class="skill-card__shine"></div>
+                            <div class="skill-card__icon" data-skill="swift">
+                                <img alt="" /><span class="skill-card__icon-glyph">Sw</span>
+                            </div>
+                            <h3 class="skill-card__name">Swift</h3>
+                            <div class="skill-card__meta">1 mth · quit</div>
+                            <div class="skill-card__bar">
+                                <div class="skill-card__bar-fill" data-level="0.04"></div>
+                            </div>
+                        </article>
+                    -->
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="175">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="powershell">
+							<img alt="" /><span class="skill-card__icon-glyph">PS</span>
+						</div>
+						<h3 class="skill-card__name">PowerShell</h3>
+						<div class="skill-card__meta">1 yrs · learning</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.45"></div>
+						</div>
+					</article>
+
+					<article class="skill-card" data-aos="fade-up" data-aos-delay="245">
+						<div class="skill-card__shine"></div>
+						<div class="skill-card__icon" data-skill="go">
+							<img alt="" /><span class="skill-card__icon-glyph">Go</span>
+						</div>
+						<h3 class="skill-card__name">Go</h3>
+						<div class="skill-card__meta">1 mth · learning</div>
+						<div class="skill-card__bar">
+							<div class="skill-card__bar-fill" data-level="0.03"></div>
+						</div>
+					</article>
+					<!--
+                        <article class="skill-card" data-aos="fade-up" data-aos-delay="0">
+                            <div class="skill-card__shine"></div>
+                            <div class="skill-card__icon" data-skill="cpp">
+                                <img alt="" /><span class="skill-card__icon-glyph">C++</span>
+                            </div>
+                            <h3 class="skill-card__name">C++</h3>
+                            <div class="skill-card__meta">1 mth · learning</div>
+                            <div class="skill-card__bar">
+                                <div class="skill-card__bar-fill" data-level="0"></div>
+                            </div>
+                        </article>
+                    -->
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       3. JOURNEY — How I Started Coding
+       ========================================================= -->
+		<section class="journey" id="journey" data-screen-label="03 Journey">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">03 / Journey</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">How it all started.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					From curiosity to creation — the moments that shaped my path as a developer.
+				</p>
+
+				<div class="journey__wrapper">
+					<div class="journey__track">
+
+						<article class="journey-card" data-aos="fade-up" data-aos-delay="0">
+							<div class="journey-card__year">2019</div>
+							<div class="journey-card__body">
+								<h3 class="journey-card__title">Exploring Computers</h3>
+								<p class="journey-card__desc">
+									I became curious about computers and started exploring websites, software, and the
+									internet. As I learned how they worked, that curiosity naturally grew into an
+									interest
+									in programming and web development.
+								</p>
+							</div>
+						</article>
+
+						<article class="journey-card" data-aos="fade-up" data-aos-delay="60">
+							<div class="journey-card__year">2022</div>
+							<div class="journey-card__body">
+								<h3 class="journey-card__title">Discovering Web Development</h3>
+								<p class="journey-card__desc">
+									While exploring Chrome DevTools, I became fascinated by how websites were built. I
+									started learning HTML, CSS, and JavaScript, and realized I wanted to become a web
+									developer.
+								</p>
+							</div>
+						</article>
+
+						<article class="journey-card" data-aos="fade-up" data-aos-delay="120">
+							<div class="journey-card__year">2023</div>
+							<div class="journey-card__body">
+								<h3 class="journey-card__title">Learning the Fundamentals</h3>
+								<p class="journey-card__desc">
+									I began creating simple websites with HTML, CSS, and JavaScript while studying
+									through
+									online resources. Every small project helped me build confidence and strengthen my
+									understanding of web development.
+								</p>
+							</div>
+						</article>
+
+						<article class="journey-card" data-aos="fade-up" data-aos-delay="180">
+							<div class="journey-card__year">2024</div>
+							<div class="journey-card__body">
+								<h3 class="journey-card__title">Building Projects</h3>
+								<p class="journey-card__desc">
+									I shifted my focus from learning concepts to building real projects. Along the way,
+									I learned Python, Git, and GitHub, and improved my problem-solving skills through
+									practical experience and continuous development.
+								</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       4. IN PROGRESS
+       ========================================================= -->
+		<section class="wip" id="wip" data-screen-label="04 In Progress">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">04 / In Progress</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">What's on my desk.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					Active projects in various stages of done. Updated when I remember to.
+				</p>
+
+				<div class="wip__list">
+					<div class="wip-item" data-aos="fade-up">
+						<div class="wip-item__progress">98<span>%</span></div>
+						<div class="wip-item__body">
+							<h3>Archiver</h3>
+							<p>
+								A tiny archiver program that compresses and decompresses files and folder with default
+								Python library. Fast, light and easy to use.
+							</p>
+						</div>
+						<div class="wip-item__bar">
+							<div class="wip-item__bar-fill" style="width: 98%"></div>
+						</div>
+					</div>
+
+					<div class="wip-item" data-aos="fade-up" data-aos-delay="80">
+						<div class="wip-item__progress">95<span>%</span></div>
+						<div class="wip-item__body">
+							<h3>Block Coding Editor</h3>
+							<p>
+								A simple block coding editor site based on the Blocky library includes custom blocks.
+							</p>
+						</div>
+						<div class="wip-item__bar">
+							<div class="wip-item__bar-fill" style="width: 95%"></div>
+						</div>
+					</div>
+
+					<div class="wip-item" data-aos="fade-up" data-aos-delay="160">
+						<div class="wip-item__progress">50<span>%</span></div>
+						<div class="wip-item__body">
+							<h3>Personal Portfolio v3</h3>
+							<p>The site you're looking at. Always in progress, adding new features all the time.</p>
+						</div>
+						<div class="wip-item__bar">
+							<div class="wip-item__bar-fill" style="width: 50%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       5. PROJECTS (shipped)
+       ========================================================= -->
+		<section class="projects" id="projects" data-screen-label="05 Projects">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">05 / Shipped</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Things I've built.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					A small selection. Reach out if you want to dig into the why.
+				</p>
+
+				<div class="projects__grid">
+					<a href="https://jeomlang.vercel.app/" class="project-card" target="_blank"
+						rel="noopener noreferrer" data-aos="fade-up">
+						<div class="project-card__thumb">
+							<img src="images/projects/01.png" alt="Screenshot of JeomLang playground"
+								class="project-card__thumb-image" loading="lazy">
+							<div class="project-card__thumb-label"><!--[ project shot · 16:10 ]--></div>
+						</div>
+						<div class="project-card__body">
+							<div class="project-card__year">2026</div>
+							<h3 class="project-card__title">
+								JeomLang
+								<span class="arrow">↗</span>
+							</h3>
+							<p class="project-card__desc">
+								dot-only esoteric programming language with a playful syntax and browser-based
+								playground.<br>
+								The project explores unique language design, compiler/runtime behavior, and interactive
+								tooling for writing and running code on the web.
+							</p>
+							<div class="project-card__stack">
+								<span class="project-card__chip">HTML</span>
+								<span class="project-card__chip">CSS</span>
+								<span class="project-card__chip">JavaScript</span>
+								<span class="project-card__chip">NodeJS</span>
+								<span class="project-card__chip">TypeScript</span>
+								<span class="project-card__chip">Python</span>
+								<span class="project-card__chip">Flask</span>
+								<span class="project-card__chip">Shell</span>
+								<span class="project-card__chip">PowerShell</span>
+								<span class="project-card__chip">npm</span>
+								<span class="project-card__chip">JeomLang</span>
+							</div>
+						</div>
+					</a>
+
+					<a href="https://minirang.github.io/Night-View/" class="project-card" target="_blank"
+						rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="100">
+						<div class="project-card__thumb">
+							<img src='images/projects/06.png' alt="Screenshot of Night View website"
+								class="project-card__thumb-image" loading="lazy">
+							<div class="project-card__thumb-label"><!--[ project shot · 16:10 ]--></div>
+						</div>
+						<div class="project-card__body">
+							<div class="project-card__year">2026</div>
+							<h3 class="project-card__title">
+								Night View
+								<span class="arrow">↗</span>
+							</h3>
+							<p class="project-card__desc">
+								A website that showcases a beautiful canvas-rendered night view with gentle motion and
+								mood.
+							</p>
+							<div class="project-card__stack">
+								<span class="project-card__chip">HTML</span>
+								<span class="project-card__chip">JavaScript</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       6. OPEN SOURCE (contributions)
+       ========================================================= -->
+		<section class="projects" id="opensource" data-screen-label="06 Open Source">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">06 / Open Source</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">
+					Open source that I contributed.
+				</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					Small fixes, docs, and quality-of-life improvements I’ve helped with while learning in public.
+				</p>
+
+				<div class="projects__grid">
+					<a href="https://github.com/firstcontributions/first-contributions" target="_blank"
+						rel="noopener noreferrer" class="project-card" data-aos="fade-up">
+						<div class="project-card__thumb">
+							<img class="project-card__thumb-image"
+								src="https://raw.githubusercontent.com/firstcontributions/assets/refs/heads/master/preview-image.jpg"
+								alt="First Contributions project thumbnail" loading="lazy">
+							<div class="project-card__thumb-label"><!--[ contribution · add ]--></div>
+						</div>
+						<div class="project-card__body">
+							<div class="project-card__year">2026</div>
+							<h3 class="project-card__title">
+								First Contributions
+								<span class="arrow">↗</span>
+							</h3>
+							<p class="project-card__desc">
+								Added minirang to the contributions list.
+							</p>
+							<div class="project-card__stack">
+								<span class="project-card__chip">Docs</span>
+								<span class="project-card__chip">MarkDown</span>
+								<span class="project-card__chip">Open Source</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       7. ACHIEVEMENTS
+       ========================================================= -->
+		<section class="now" id="achievements" data-screen-label="07 Achievements">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">07 / Achievements</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">A few milestones.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					Selected accomplishments, recognitions, and moments that helped shape my learning path.
+				</p>
+
+				<div class="now__grid">
+					<!--
+                        <div class="now-card" data-aos="fade-up">
+                            <div class="now-card__media">
+                                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Team collaboration and brainstorming at a hackathon" loading="lazy">
+                            </div>
+                            <div class="now-card__label">Award</div>
+                            <h3 class="now-card__title">Hackathon finalist</h3>
+                            <p class="now-card__sub">Short project title</p>
+                            <ul class="now-card__list">
+                                <li>Built a small tool under a tight deadline</li>
+                                <li>Focused on usability and clear workflow</li>
+                            </ul>
+                        </div>
+                    -->
+
+					<div class="now-card" data-aos="fade-up" data-aos-delay="100">
+						<div class="now-card__media">
+							<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+								alt="Team collaboration and brainstorming at a hackathon" loading="lazy">
+						</div>
+						<div class="now-card__label">Recognition</div>
+						<h3 class="now-card__title">Open-source contributor</h3>
+						<p class="now-card__sub">Multiple helpful fixes and docs</p>
+						<ul class="now-card__list">
+							<li>Improved onboarding and contributor guidance</li>
+							<li>Helped fix small but meaningful issues</li>
+						</ul>
+					</div>
+
+					<div class="now-card" data-aos="fade-up" data-aos-delay="200">
+						<div class="now-card__media">
+							<img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+								alt="Personal projects and experiments" loading="lazy">
+						</div>
+						<div class="now-card__label">Milestone</div>
+						<h3 class="now-card__title">Built and shipped</h3>
+						<p class="now-card__sub">Personal tools and experiments</p>
+						<ul class="now-card__list">
+							<li>Turned ideas into working projects</li>
+							<li>Kept improving after feedback and testing</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       8. BOOKS I'M READING
+       ========================================================= -->
+		<section class="now" id="books" data-screen-label="08 Books">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">08 / Reading</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Books I’m reading.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					Development books and references that help me think more clearly about systems, product, and code.
+				</p>
+
+				<div class="now__grid">
+					<div class="now-card" data-aos="fade-up">
+						<div class="now-card__media">
+							<img src="https://image.yes24.com/goods/76105167/XL"
+								alt="Stack of books and notes for deep reading" loading="lazy">
+						</div>
+						<div class="now-card__label">Currently reading</div>
+						<h3 class="now-card__title">코딩책과 함께 보는 소프트웨어 개념 사전</h3>
+						<p class="now-card__sub">김현정</p>
+						<ul class="now-card__list">
+							<li>Core OS concepts and software execution environments</li>
+							<li>High-level overview of web architecture and IT ecosystems</li>
+							<li>Fundamental CS terminology for effective team collaboration</li>
+						</ul>
+					</div>
+
+					<div class="now-card" data-aos="fade-up" data-aos-delay="100">
+						<div class="now-card__media">
+							<img src="https://image.yes24.com/goods/124396125/XL"
+								alt="Stack of books and notes for deep reading" loading="lazy">
+						</div>
+						<div class="now-card__label">Next up</div>
+						<h3 class="now-card__title">You Don't Know JS Yet</h3>
+						<p class="now-card__sub">Kyle Simpson</p>
+						<ul class="now-card__list">
+							<li>Deep dive into JavaScript engine mechanics: Scopes, Closures, and Hoisting</li>
+							<li>Type systems, explicit/implicit coercion, and value mutation</li>
+							<li>Asynchronous programming patterns and predictable code execution</li>
+						</ul>
+					</div>
+
+					<div class="now-card" data-aos="fade-up" data-aos-delay="200">
+						<div class="now-card__media">
+							<img src="https://gimg.gilbut.co.kr/book/BN003377/rn_view_BN003377.jpg"
+								alt="Stack of books and notes for deep reading" loading="lazy">
+						</div>
+						<div class="now-card__label">Reference</div>
+						<h3 class="now-card__title">코딩 자율학습 HTML+CSS+자바스크립트</h3>
+						<p class="now-card__sub">수코딩(김기수)</p>
+						<ul class="now-card__list">
+							<li>Semantic markup and web standards for accessibility</li>
+							<li>Modern layout systems using CSS Flexbox and Grid</li>
+							<li>Dynamic DOM manipulation and client-side event handling</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       9. NOW  (the dig-curated section: a snapshot of life)
+       ========================================================= -->
+		<section class="now" id="now" data-screen-label="09 Now">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">09 / Now</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">A snapshot of right now.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					A quick look into what I'm diving into right now — tracking my journey, learning new stacks, and
+					finding my rhythm as a developer.
+				</p>
+
+				<div class="now__grid">
+					<div class="now-card" data-aos="fade-up">
+						<div class="now-card__label">Learning</div>
+						<h3 class="now-card__title">Vite, TS &amp; Python Ecosystems</h3>
+						<p class="now-card__sub">Exploring full-stack tech and multi-language web dev</p>
+						<ul class="now-card__list">
+							<li>Going to Building a school info web app using Fetch and APIs</li>
+							<li>Experimenting with different languages to build dynamic pages</li>
+							<li>Deepening my understanding of API integration and data serving</li>
+						</ul>
+					</div>
+
+					<div class="now-card" data-aos="fade-up" data-aos-delay="100">
+						<div class="now-card__label">Listening</div>
+						<h3 class="now-card__title">On repeat this month</h3>
+						<p class="now-card__sub">Keeping my focus while coding and debugging</p>
+						<ul class="now-card__list">
+							<li>Classical piano music for deep focus</li>
+							<li>Mellow and calming pop playlists</li>
+							<li>Immersive lo-fi tracks on loop</li>
+						</ul>
+					</div>
+
+					<div class="now-card" data-aos="fade-up" data-aos-delay="200">
+						<div class="now-card__label">Thinking</div>
+						<blockquote class="now-card__quote">
+							"As a student, I often wonder about the future of developers in the AI era. But in the end,
+							actions speak louder than words."
+							<footer class="now-card__quote-author">— Linus Torvalds, "Talk is cheap. Show me the code."
+							</footer>
+						</blockquote>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       10. GITHUB STATS
+       ========================================================= -->
+		<section class="ghstats" id="github" data-screen-label="10 GitHub">
+			<div class="container">
+				<p class="section-eyebrow" data-aos="fade-up">10 / GitHub</p>
+				<h2 class="section-title" data-aos="fade-up" data-aos-delay="60">Activity, by the numbers.</h2>
+				<p class="section-lead" data-aos="fade-up" data-aos-delay="120">
+					A quick snapshot of my <code
+						style="font-family: &quot;JetBrains Mono&quot;, monospace; color: var(--accent)">GitHub activity</code>:
+					issues opened, pull requests authored, repositories contributed to, and total stars earned across
+					public projects.
+				</p>
+
+				<div class="ghstats__grid" data-gh-user="minirang">
+					<div class="ghstat-card" data-aos="fade-up">
+						<div class="ghstat-card__icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+								stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<circle cx="12" cy="12" r="9"></circle>
+								<circle cx="12" cy="12" r="2.5"></circle>
+							</svg>
+						</div>
+						<div class="ghstat-card__label">Issues</div>
+						<div class="ghstat-card__value" data-stat="issues">—</div>
+						<div class="ghstat-card__sub">opened by me, all time</div>
+					</div>
+
+					<div class="ghstat-card" data-aos="fade-up" data-aos-delay="60">
+						<div class="ghstat-card__icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+								stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<circle cx="6" cy="6" r="2.5"></circle>
+								<circle cx="6" cy="18" r="2.5"></circle>
+								<circle cx="18" cy="18" r="2.5"></circle>
+								<path d="M6 8.5v7"></path>
+								<path d="M6 8.5c0 4 4 4 6 4h4"></path>
+							</svg>
+						</div>
+						<div class="ghstat-card__label">Pull Requests</div>
+						<div class="ghstat-card__value" data-stat="prs">—</div>
+						<div class="ghstat-card__sub">authored, all time</div>
+					</div>
+
+					<div class="ghstat-card" data-aos="fade-up" data-aos-delay="120">
+						<div class="ghstat-card__icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+								stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M12 3l2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.8-5.4 2.8 1-6L3.2 9.4l6.1-.9z"></path>
+							</svg>
+						</div>
+						<div class="ghstat-card__label">Stars Earned</div>
+						<div class="ghstat-card__value" data-stat="stars">—</div>
+						<div class="ghstat-card__sub">across all repos</div>
+					</div>
+
+					<div class="ghstat-card" data-aos="fade-up" data-aos-delay="180">
+						<div class="ghstat-card__icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+								stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M4 5h7l2 2h7v12H4z"></path>
+								<path d="M4 9h16"></path>
+							</svg>
+						</div>
+						<div class="ghstat-card__label">Public Repos</div>
+						<div class="ghstat-card__value" data-stat="repos">—</div>
+						<div class="ghstat-card__sub">currently public</div>
+					</div>
+				</div>
+
+				<p class="ghstats__note" data-aos="fade-up">
+					<span class="ghstats__dot"></span>
+					<span data-stat="status">loading from github.com/minirang…</span>
+				</p>
+
+				<!-- Friendly error/empty state (hidden by default, shown on API fail) -->
+				<div class="ghstats__empty" id="ghEmpty" style="display: none" data-aos="fade-up">
+					<div class="ghstats__empty-icon">
+						<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<!-- Cute duck/octocat-style mascot -->
+							<circle cx="40" cy="32" r="22" fill="currentColor" opacity="0.12" />
+							<!-- body -->
+							<ellipse cx="40" cy="50" rx="18" ry="14" fill="currentColor" opacity="0.18" />
+							<!-- head -->
+							<circle cx="40" cy="30" r="16" fill="currentColor" opacity="0.3" />
+							<!-- eyes -->
+							<circle cx="34" cy="27" r="3" fill="currentColor" opacity="0.9" />
+							<circle cx="46" cy="27" r="3" fill="currentColor" opacity="0.9" />
+							<circle cx="35" cy="26" r="1" fill="white" opacity="0.8" />
+							<circle cx="47" cy="26" r="1" fill="white" opacity="0.8" />
+							<!-- beak -->
+							<path d="M37 34 Q40 37 43 34" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" opacity="0.7" />
+							<!-- ears/tentacles -->
+							<path d="M26 20 Q20 10 24 6 Q28 12 26 20Z" fill="currentColor" opacity="0.25" />
+							<path d="M54 20 Q60 10 56 6 Q52 12 54 20Z" fill="currentColor" opacity="0.25" />
+							<!-- arms -->
+							<path d="M24 48 Q16 54 18 62" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+								opacity="0.3" />
+							<path d="M56 48 Q64 54 62 62" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+								opacity="0.3" />
+						</svg>
+					</div>
+					<div>
+						<h4 id="ghEmptyTitle">GitHub API에 연결할 수 없어요</h4>
+						<p id="ghEmptyMsg">
+							rate limit이거나 네트워크 문제일 수 있어요. 잠시 뒤 다시 시도하거나 GitHub에서 직접
+							확인해보세요.
+						</p>
+					</div>
+					<a id="ghEmptyBtn" href="https://github.com/minirang" target="_blank" rel="noopener"
+						class="btn btn--ghost">
+						GitHub 프로필 보기
+						<span aria-hidden="true">↗</span>
+					</a>
+				</div>
+
+				<!-- Laptop carousel + mascot -->
+				<div class="gh-stage" data-aos="fade-up" data-aos-delay="120">
+					<!-- Laptop frame with project screenshots carousel -->
+					<div class="laptop" id="ghLaptop">
+						<div class="laptop__lid">
+							<div class="laptop__cam"></div>
+							<div class="laptop__screen">
+								<div class="carousel" id="ghCarousel">
+									<!-- Slides populated by JS from images/projects/ -->
+								</div>
+								<!-- Controls overlay -->
+								<div class="carousel__chrome">
+									<button class="carousel__btn" id="carouselPrev" aria-label="Previous">
+										<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+											stroke-linecap="round">
+											<path d="M8 2L4 6l4 4" />
+										</svg>
+									</button>
+									<div class="carousel__dots" id="carouselDots"></div>
+									<button class="carousel__btn" id="carouselPlayPause" aria-label="Pause/Play">
+										<svg id="carouselPauseIcon" viewBox="0 0 12 12" fill="currentColor">
+											<rect x="2" y="2" width="3" height="8" rx="1" />
+											<rect x="7" y="2" width="3" height="8" rx="1" />
+										</svg>
+										<svg id="carouselPlayIcon" viewBox="0 0 12 12" fill="currentColor"
+											style="display: none">
+											<path d="M3 2l7 4-7 4V2z" />
+										</svg>
+									</button>
+									<button class="carousel__btn" id="carouselNext" aria-label="Next">
+										<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+											stroke-linecap="round">
+											<path d="M4 2l4 4-4 4" />
+										</svg>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="laptop__base"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- =========================================================
+       11. CONTACT
+       ========================================================= -->
+		<section class="contact" id="contact" data-screen-label="11 Contact">
+			<div class="container">
+				<div class="contact__panel" data-aos="fade-up">
+					<div>
+						<p class="section-eyebrow">11 / Contact</p>
+						<h2 class="contact__heading">
+							Let's build<br />
+							<em>something good.</em>
+						</h2>
+						<p class="contact__sub">
+							Open to freelance, full-time, and the occasional weekend collab. Replies usually within
+							24h.
+						</p>
+					</div>
+
+					<div class="contact__channels">
+						<a class="contact__github" href="https://github.com/minirang" target="_blank" rel="noopener"
+							data-gh-user="minirang">
+							<img class="contact__github-avatar" src="https://github.com/minirang.png?size=120"
+								alt="GitHub avatar" loading="lazy" width="56" height="56" />
+							<span class="contact__github-body">
+								<span class="contact__github-key">GITHUB</span>
+								<span class="contact__github-name">minirang</span>
+							</span>
+							<span class="contact__github-arrow" aria-hidden="true">↗</span>
+						</a>
+
+						<a class="contact__channel" href="mailto:minseong130502@gmail.com">
+							<span class="contact__channel-key">EMAIL</span>
+							<span class="contact__channel-val">minseong130502@gmail.com</span>
+							<span class="contact__channel-arrow" aria-hidden="true">↗</span>
+						</a>
+						<a class="contact__channel" href="https://npmjs.com/~minirang" target="_blank" rel="noopener">
+							<span class="contact__channel-key">npm</span>
+							<span class="contact__channel-val">minirang</span>
+							<span class="contact__channel-arrow" aria-hidden="true">↗</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Motion toggle (pause/play all animations) -->
+	<button class="motion-toggle" id="motionToggle" aria-label="애니메이션 정지/재생">
+		<span class="motion-toggle__label" id="motionLabel">정지</span>
+		<svg id="motionPauseIcon" viewBox="0 0 16 16" fill="currentColor">
+			<rect x="3" y="2" width="4" height="12" rx="1.5" />
+			<rect x="9" y="2" width="4" height="12" rx="1.5" />
+		</svg>
+		<svg id="motionPlayIcon" viewBox="0 0 16 16" fill="currentColor" style="display: none">
+			<path d="M4 2.5l10 5.5-10 5.5V2.5z" />
+		</svg>
+	</button>
+
+	<footer class="site-footer">
+		<div class="container site-footer__inner">
+			<div class="site-footer__left">
+				<div class="site-footer__name">minirang</div>
+				<p>Building small, useful web experiences with clear logic and a polished feel.</p>
+			</div>
+
+			<div class="site-footer__details">
+				<a href="mailto:minseong130502@gmail.com">minseong130502@gmail.com</a>
+				<span>Seoul, KR</span>
+				<span>Available for new projects</span>
+			</div>
+		</div>
+
+		<div class="container site-footer__bottom">
+			<span>© 2026 minirang · all rights reserved</span>
+		</div>
+
+		<div class="container site-footer__bottom">
+			<span>Built with HTML, CSS, and JS</span>
+		</div>
+	</footer>
+
+	<!-- AOS lib -->
+	<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+	<script>
+		AOS.init({
+			easing: 'ease-out-cubic'
+		});
+	</script>
+
+	<!-- Header (loads header.html + behavior + injects header.css) -->
+	<script src="./js/header.js" data-active="home"></script>
+
+	<!-- Page behavior (inlined) -->
+	<script src="./js/main.js"></script>
+	<script src="./js/typing.js"></script>
+	<script src="./js/journey.js"></script>
+</body>
+
+</html>
