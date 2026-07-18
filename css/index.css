@@ -4,22 +4,18 @@
     --bg-elev-2: #16161a;
     --border: rgba(255, 255, 255, 0.07);
     --border-strong: rgba(255, 255, 255, 0.14);
-
     --text: #e8e8ea;
     --text-dim: #9a9aa2;
     --text-faint: #5a5a62;
-
     --accent: oklch(0.78 0.12 200);
     /* soft cyan */
     --accent-2: oklch(0.78 0.12 280);
     /* soft violet */
     --accent-warm: oklch(0.8 0.13 60);
     /* warm amber */
-
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 22px;
-
     --max-width: 1180px;
     --pad-x: 32px;
 }
@@ -601,6 +597,13 @@ JOURNEY
     overflow-y: hidden;
     overscroll-behavior-x: contain;
     touch-action: pan-y;
+}
+
+@media (max-width: 900px) {
+    .journey__wrapper {
+        touch-action: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 /* ============================================
