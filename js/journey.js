@@ -1,6 +1,20 @@
 const wrapper = document.querySelector(".journey__wrapper");
 
 if (window.matchMedia("(pointer: fine)").matches) {
+    let targetScrollLeft = wrapper.scrollLeft;
+    let isAnimating = false;
+    const LERP_FACTOR = 0.1;
+    function animate() {
+        const diff = targetScrollLeft - wrapper.scrollLeft;
+        if (Math.abs(diff) > 0.5) {
+            wrapper.scrollLeft += diff * LERP_FACTOR;
+            requestAnimationFrame(animate);
+        } else {
+            wrapper.scrollLeft = targetScrollLeft;
+            isAnimating = false;
+        }
+    }
+
     wrapper.addEventListener(
         "wheel",
         (e) => {
@@ -12,7 +26,16 @@ if (window.matchMedia("(pointer: fine)").matches) {
                 e.deltaY < 0 && currentScrollLeft > 0;
             if (canScrollRight || canScrollLeft) {
                 e.preventDefault();
-                wrapper.scrollLeft += e.deltaY;
+                
+                if (!isAnimating) {
+                    targetScrollLeft = wrapper.scrollLeft;
+                }
+                targetScrollLeft += e.deltaY;
+                targetScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScrollLeft));
+                if (!isAnimating) {
+                    isAnimating = true;
+                    requestAnimationFrame(animate);
+                }
             }
         },
         { passive: false },
