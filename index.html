@@ -14,10 +14,8 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
 		rel="stylesheet" />
-
 	<!-- AOS -->
 	<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
 	<!-- Header CSS (external) -->
 	<link rel="stylesheet" href="css/index.css" />
 	<link rel="stylesheet" href="css/header.css" />
@@ -320,9 +318,9 @@
 							<div class="journey-card__body">
 								<h3 class="journey-card__title">Expanding Horizons</h3>
 								<p class="journey-card__desc">
-									Focusing on smooth collaboration and thoughtful UI/UX details, 
-									ensuring even the smallest interactions delight the user. 
-									I am also diving into backend development to better understand 
+									Focusing on smooth collaboration and thoughtful UI/UX details,
+									ensuring even the smallest interactions delight the user.
+									I am also diving into backend development to better understand
 									the entire architecture and build more robust full-stack projects.
 								</p>
 							</div>
@@ -916,7 +914,16 @@
 			easing: 'ease-out-cubic'
 		});
 	</script>
-
+	<!-- Lenis lib -->
+	<script src="https://unpkg.com/lenis@1.3.14/dist/lenis.min.js"></script>
+	<script>
+		const lenis = new Lenis()
+		function raf(time) {
+			lenis.raf(time)
+			requestAnimationFrame(raf)
+		}
+		requestAnimationFrame(raf)
+	</script>
 	<!-- Header (loads header.html + behavior + injects header.css) -->
 	<script src="./js/header.js" data-active="home"></script>
 
