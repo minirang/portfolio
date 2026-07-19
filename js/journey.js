@@ -12,10 +12,7 @@ if (window.matchMedia("(pointer: fine)").matches) {
                 e.deltaY < 0 && currentScrollLeft > 0;
             if (canScrollRight || canScrollLeft) {
                 e.preventDefault();
-                wrapper.scrollTo({
-                    left: wrapper.scrollLeft + e.deltaY,
-                    behavior: "smooth"
-                });
+                wrapper.scrollLeft += e.deltaY;
             }
         }, {
             passive: false
