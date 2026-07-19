@@ -19,17 +19,18 @@ if (window.matchMedia("(pointer: fine)").matches) {
         "wheel",
         (e) => {
             const maxScrollLeft = wrapper.scrollWidth - wrapper.clientWidth;
-            const currentScrollLeft = wrapper.scrollLeft;
+            
+            if (!isAnimating) {
+                targetScrollLeft = wrapper.scrollLeft;
+            }
+
             const canScrollRight =
-                e.deltaY > 0 && currentScrollLeft < maxScrollLeft;
+                e.deltaY > 0 && targetScrollLeft < maxScrollLeft;
             const canScrollLeft =
-                e.deltaY < 0 && currentScrollLeft > 0;
+                e.deltaY < 0 && targetScrollLeft > 0;
             if (canScrollRight || canScrollLeft) {
                 e.preventDefault();
-                if (!isAnimating) {
-                    targetScrollLeft = wrapper.scrollLeft;
-                }
-                targetScrollLeft += e.deltaY * 2;
+                targetScrollLeft += e.deltaY * 1.5;
                 targetScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScrollLeft));
                 if (!isAnimating) {
                     isAnimating = true;
