@@ -10,4 +10,4 @@
 
 ---
 
-![thumbnail](./public/images/thumbnail.png)
+![thumbnail](./public/images/screenshot.png)
