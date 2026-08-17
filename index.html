@@ -605,7 +605,15 @@
 						<div class="project-card__thumb">
 							<img class="project-card__thumb-image"
 								src="https://resources.whatwg.org/logo.svg" 
-								alt="web-history project thumbnail" width="200" style="height: auto; margin-bottom: 50px;" loading="lazy">
+								alt="web-history project thumbnail" width="200" style="
+								height: auto;
+								object-fit: contain;
+        						object-position: center;
+        						position: absolute;
+        						top: 50%;
+        						left: 50%;
+        						transform: translate(-50%, -50%);"
+							loading="lazy">
 							<div class="project-card__thumb-label"><!--[ contribution · add ]--></div>
 						</div>
 						<div class="project-card__body">
